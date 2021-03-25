@@ -1,5 +1,6 @@
 .DS_Store
 coverage/
+data/
 docs/
 src/
 dist/test/

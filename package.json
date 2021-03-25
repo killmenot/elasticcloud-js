@@ -1,5 +1,5 @@
 {
-  "name": "elasticsearch-restful",
+  "name": "elasticcloud",
   "version": "0.1.0",
   "engines": {
     "node": ">=0.10"
@@ -7,7 +7,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Alexey Kucherenko <alexei.kucherenko@gmail.com>",
-  "description": "A Node.js client to work with Elasticsearch Service RESTful API to create and manage your Elastic Stack deployments",
+  "description": "A Node.js client to work with Elastic Cloud RESTful API to create and manage your Elastic Stack deployments",
   "keywords": [
     "elasticsearch",
     "restful",
@@ -16,7 +16,7 @@
     "deployments"
   ],
   "license": "MIT",
-  "repository": "git@github.com:killmenot/elasticsearch-restful-js.git",
+  "repository": "git@github.com:killmenot/elasticcloud-js.git",
   "scripts": {
     "build": "rm -Rf ./dist && tsc -b",
     "test": "jest",
@@ -26,7 +26,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest",
     "lint": "eslint --fix ./src/**/*.ts",
     "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
-    "dev": "ts-node -r tsconfig-paths/register src/dev.ts"
+    "dev": "ts-node -r tsconfig-paths/register src/dev.ts",
+    "dev2": "ts-node -r tsconfig-paths/register src/interfaces-dev.ts"
   },
   "dependencies": {
     "axios": "^0.21.1"

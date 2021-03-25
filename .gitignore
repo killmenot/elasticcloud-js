@@ -1,6 +1,9 @@
 node_modules/
+data/
 dist/
+docs/
 coverage
 *.code-workspace
 *.sublime*
 dev.ts
+interfaces-dev.ts

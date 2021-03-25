@@ -1,3 +1,3 @@
 export * from './interfaces'
-export * from './elasticsearch-restful'
-export * from './elasticsearch-restful-options'
+export * from './elastic-cloud'
+export * from './elastic-cloud-options'
