@@ -1,1 +1,1 @@
-export type ClusterMetadataSettings = Record<string, string>
+export type ClusterMetadataSettings = Record<string, unknown>

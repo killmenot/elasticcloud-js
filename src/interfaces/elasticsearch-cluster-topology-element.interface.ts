@@ -7,12 +7,12 @@ export interface ElasticsearchClusterTopologyElement {
   autoscaling_max?: TopologySize
   autoscaling_min?: TopologySize[]
   autoscaling_policy_override_json?: Record<string, unknown>
-  elasticsearch: ElasticsearchConfiguration
+  elasticsearch?: ElasticsearchConfiguration
   id?: string
   instance_configuration_id?: string
   node_roles?: string[]
-  node_type?: ElasticsearchNodeType[]
+  node_type?: ElasticsearchNodeType
   size?: TopologySize
   topology_element_control?: TopologyElementControl
-  zone_count?: boolean //int32
+  zone_count?: number //int32
 }
