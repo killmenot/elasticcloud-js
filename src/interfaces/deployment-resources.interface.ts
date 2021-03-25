@@ -1,3 +1,1 @@
-export interface DeploymentResources {
-
-}
+export interface DeploymentResources {}

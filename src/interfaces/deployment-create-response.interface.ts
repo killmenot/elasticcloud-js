@@ -1,3 +1,1 @@
-export interface DeploymentCreateResponse {
-  
-}
+export interface DeploymentCreateResponse {}

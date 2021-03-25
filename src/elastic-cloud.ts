@@ -27,7 +27,7 @@ export class ElasticCloud {
   public async deleteDeployment(deploymentId: string): Promise<AxiosResponse<DeploymentDeleteResponse>> {
     return this.http.delete(`/deployments/${deploymentId}`)
   }
-  
+
   public async getDeploymentsList(): Promise<AxiosResponse<DeploymentsListResponse>> {
     return this.http.get('/deployments')
   }

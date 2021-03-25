@@ -1,3 +1,1 @@
-export interface DeploymentSettings {
-
-}
+export interface DeploymentSettings {}
