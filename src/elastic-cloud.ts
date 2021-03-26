@@ -1,5 +1,8 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios'
-import { ElasticCloudOptions } from './elastic-cloud-options'
+import axios, { AxiosInstance } from 'axios'
+import { ElasticCloudOptions } from './elastic-cloud-options.interface'
+import { ElasticResponse } from './elastic-response.interface'
+import { Response } from './decorators'
+import { ElasticError } from './errors'
 import {
   DeploymentCreateRequest,
   DeploymentsListResponse,
@@ -18,29 +21,44 @@ export class ElasticCloud {
       baseURL: 'https://api.elastic-cloud.com/api/v1',
       headers: { Authorization: `ApiKey ${options.apiKey}` },
     })
+
+    this.http.interceptors.response.use(
+      (response) => response,
+      (err) => {
+        return Promise.reject(
+          new ElasticError(err.response.status, err.response.headers, err.response.data, err.message),
+        )
+      },
+    )
   }
 
-  public async createDeployment(data: DeploymentCreateRequest): Promise<AxiosResponse<DeploymentCreateResponse>> {
-    return this.http.post('/deployments', { data })
+  @Response()
+  public async createDeployment(data: DeploymentCreateRequest): Promise<ElasticResponse<DeploymentCreateResponse>> {
+    return this.http.post('/deployments', data)
   }
 
-  public async deleteDeployment(deploymentId: string): Promise<AxiosResponse<DeploymentDeleteResponse>> {
+  @Response()
+  public async deleteDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentDeleteResponse>> {
     return this.http.delete(`/deployments/${deploymentId}`)
   }
 
-  public async getDeploymentsList(): Promise<AxiosResponse<DeploymentsListResponse>> {
+  @Response()
+  public async getDeploymentsList(): Promise<ElasticResponse<DeploymentsListResponse>> {
     return this.http.get('/deployments')
   }
 
-  public async getDeployment(deploymentId: string): Promise<AxiosResponse<DeploymentGetResponse>> {
+  @Response()
+  public async getDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentGetResponse>> {
     return this.http.get(`/deployments/${deploymentId}`)
   }
 
-  public async restoreDeployment(deploymentId: string): Promise<AxiosResponse<DeploymentRestoreResponse>> {
+  @Response()
+  public async restoreDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentRestoreResponse>> {
     return this.http.post(`/deployments/${deploymentId}/_restore`)
   }
 
-  public async shutdownDeployment(deploymentId: string): Promise<AxiosResponse<DeploymentShutdownResponse>> {
+  @Response()
+  public async shutdownDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentShutdownResponse>> {
     return this.http.post(`/deployments/${deploymentId}/_shutdown`)
   }
 }
