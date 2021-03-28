@@ -23,4 +23,5 @@
 
 export interface ElasticCloudOptions {
   apiKey: string
+  baseURL?: string
 }

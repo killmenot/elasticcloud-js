@@ -36,13 +36,22 @@ import {
   DeploymentShutdownResponse,
 } from './interfaces'
 
+const defaults = {
+  baseURL: 'https://api.elastic-cloud.com/api/v1',
+}
+
 export class ElasticCloud {
   private http: AxiosInstance
+  private options: ElasticCloudOptions
 
   constructor(options: ElasticCloudOptions) {
+    this.options = {
+      ...defaults,
+      ...options,
+    }
     this.http = axios.create({
-      baseURL: 'https://api.elastic-cloud.com/api/v1',
-      headers: { Authorization: `ApiKey ${options.apiKey}` },
+      baseURL: this.options.baseURL,
+      headers: { Authorization: `ApiKey ${this.options.apiKey}` },
     })
 
     this.http.interceptors.response.use(
