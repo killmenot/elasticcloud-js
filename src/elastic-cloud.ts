@@ -21,6 +21,7 @@
  * SOFTWARE.
  */
 
+import { URL } from 'url'
 import axios, { AxiosInstance } from 'axios'
 import { ElasticCloudOptions } from './elastic-cloud-options.interface'
 import { ElasticResponse } from './elastic-response.interface'
@@ -28,6 +29,7 @@ import { Response } from './decorators'
 import { ElasticError } from './errors'
 import {
   DeploymentCreateRequest,
+  DeploymentsListQueryParams,
   DeploymentsListResponse,
   DeploymentCreateResponse,
   DeploymentDeleteResponse,
@@ -39,6 +41,8 @@ import {
 const defaults = {
   baseURL: 'https://api.elastic-cloud.com/api/v1',
 }
+
+type ElasticQueryParams = DeploymentsListQueryParams
 
 export class ElasticCloud {
   private http: AxiosInstance
@@ -64,6 +68,18 @@ export class ElasticCloud {
     )
   }
 
+  private getUrl(endpoint, query?: ElasticQueryParams): string {
+    const url = new URL(this.options.baseURL)
+
+    url.pathname = `${url.pathname}/${endpoint}`
+
+    Object.keys(query || {}).forEach((x) => {
+      url.searchParams.set(x, query[x])
+    })
+
+    return url.toString()
+  }
+
   @Response()
   public async createDeployment(data: DeploymentCreateRequest): Promise<ElasticResponse<DeploymentCreateResponse>> {
     return this.http.post('/deployments', data)
@@ -75,8 +91,12 @@ export class ElasticCloud {
   }
 
   @Response()
-  public async getDeploymentsList(): Promise<ElasticResponse<DeploymentsListResponse>> {
-    return this.http.get('/deployments')
+  public async getDeploymentsList(
+    query?: DeploymentsListQueryParams,
+  ): Promise<ElasticResponse<DeploymentsListResponse>> {
+    const url = this.getUrl('/deployments', query)
+
+    return this.http.get(url)
   }
 
   @Response()
