@@ -21,12 +21,7 @@
  * SOFTWARE.
  */
 
-import 'reflect-metadata'
-
-export * from './decorators'
-export * from './errors'
-export * from './interfaces'
-export * from './types'
-export * from './elastic-cloud'
-export * from './elastic-cloud-options.interface'
-export * from './elastic-response.interface'
+export interface DeploymentsListQueryParams {
+  request_id?: string
+  validate_only?: boolean
+}

@@ -21,12 +21,8 @@
  * SOFTWARE.
  */
 
-import 'reflect-metadata'
+import { DeploymentsListingData } from './deployments-listing-data.interface'
 
-export * from './decorators'
-export * from './errors'
-export * from './interfaces'
-export * from './types'
-export * from './elastic-cloud'
-export * from './elastic-cloud-options.interface'
-export * from './elastic-response.interface'
+export interface DeploymentsListResponse {
+  deployments: DeploymentsListingData[]
+}
