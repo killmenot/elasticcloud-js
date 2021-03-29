@@ -92,7 +92,7 @@ export class ElasticCloud {
   @Response()
   public async createDeployment(
     data: DeploymentCreateRequest,
-    query?: DeploymentCreateQueryParams
+    query?: DeploymentCreateQueryParams,
   ): Promise<ElasticResponse<DeploymentCreateResponse>> {
     return this.http.post('/deployments', data)
   }
@@ -115,7 +115,7 @@ export class ElasticCloud {
   @Response()
   public async getDeployment(
     deploymentId: string,
-    query?: DeploymentGetQueryParams
+    query?: DeploymentGetQueryParams,
   ): Promise<ElasticResponse<DeploymentGetResponse>> {
     const url = this.getUrl(`/deployments/${deploymentId}`, query)
 
@@ -125,7 +125,7 @@ export class ElasticCloud {
   @Response()
   public async restoreDeployment(
     deploymentId: string,
-    query?: DeploymentRestoreQueryParams
+    query?: DeploymentRestoreQueryParams,
   ): Promise<ElasticResponse<DeploymentRestoreResponse>> {
     const url = this.getUrl(`/deployments/${deploymentId}/_restore`, query)
 
@@ -135,7 +135,7 @@ export class ElasticCloud {
   @Response()
   public async shutdownDeployment(
     deploymentId: string,
-    query?: DeploymentShutdownQueryParams
+    query?: DeploymentShutdownQueryParams,
   ): Promise<ElasticResponse<DeploymentShutdownResponse>> {
     const url = this.getUrl(`/deployments/${deploymentId}/_shutdown`, query)
 
@@ -146,7 +146,7 @@ export class ElasticCloud {
   public async updateDeployment(
     deploymentId: string,
     data: DeploymentUpdateRequest,
-    query?: DeploymentUpdateQueryParams
+    query?: DeploymentUpdateQueryParams,
   ): Promise<ElasticResponse<DeploymentUpdateResponse>> {
     const url = this.getUrl(`/deployments/${deploymentId}`, query)
 

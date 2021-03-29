@@ -22,9 +22,9 @@
  */
 
 import { MetadataItem } from './metadata-item.interface'
- 
+
 export interface DeploymentUpdateMetadata {
-   hidden?: boolean
-   system_owned?: boolean
-   tags: MetadataItem[]
- }
+  hidden?: boolean
+  system_owned?: boolean
+  tags: MetadataItem[]
+}

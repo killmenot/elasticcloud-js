@@ -23,12 +23,10 @@
 
 import { DeploymentUpdateMetadata } from './deployment-update-metadata.interface'
 
-
- 
 export interface DeploymentUpdateResources {
   apm?: DeploymentUpdateMetadata
   appsearch?: string
-   prune_orphans: boolean
-   resources?: DeploymentUpdateResources
-   settings?: DeploymentUpdateSettings
- }
+  prune_orphans: boolean
+  resources?: DeploymentUpdateResources
+  settings?: DeploymentUpdateSettings
+}

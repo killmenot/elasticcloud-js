@@ -22,9 +22,9 @@
  */
 
 export interface Kibana {
-   apm?: Apm[]
-   appsearch?: AppSearch[]
-   elasticsearch?: Elasticsearch[]
-   enterprise_search?: EnterpriseSearch[]
-   kibana?: Kibana[]
- }
+  apm?: Apm[]
+  appsearch?: AppSearch[]
+  elasticsearch?: Elasticsearch[]
+  enterprise_search?: EnterpriseSearch[]
+  kibana?: Kibana[]
+}

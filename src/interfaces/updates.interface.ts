@@ -26,11 +26,11 @@ import { AppSearch } from './app-search.interface'
 import { Elasticsearch } from './elasticsearch.interface'
 import { EnterpriseSearch } from './enterprise-search.interface'
 import { Kibana } from './kibana.interface'
- 
+
 export interface Updates {
-   apm?: Apm[]
-   appsearch?: AppSearch[]
-   elasticsearch?: Elasticsearch[]
-   enterprise_search?: EnterpriseSearch[]
-   kibana?: Kibana[]
- }
+  apm?: Apm[]
+  appsearch?: AppSearch[]
+  elasticsearch?: Elasticsearch[]
+  enterprise_search?: EnterpriseSearch[]
+  kibana?: Kibana[]
+}
