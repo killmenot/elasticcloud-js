@@ -21,19 +21,16 @@
  * SOFTWARE.
  */
 
-import {
-  DeploymentCreateQueryParams,
-  DeploymentGetQueryParams,
-  DeploymentRestoreQueryParams,
-  DeploymentShutdownQueryParams,
-  DeploymentUpdateQueryParams,
-  DeploymentsListQueryParams,
-} from '../interfaces'
+import { Apm } from './apm.interface'
+import { AppSearch } from './app-search.interface'
+import { Elasticsearch } from './elasticsearch.interface'
+import { EnterpriseSearch } from './enterprise-search.interface'
+import { Kibana } from './kibana.interface'
 
-export type ElasticQueryParams =
-  | DeploymentCreateQueryParams
-  | DeploymentGetQueryParams
-  | DeploymentRestoreQueryParams
-  | DeploymentShutdownQueryParams
-  | DeploymentUpdateQueryParams
-  | DeploymentsListQueryParams
+export interface Creates {
+  apm?: Apm[]
+  appsearch?: AppSearch[]
+  elasticsearch?: Elasticsearch[]
+  enterprise_search?: EnterpriseSearch[]
+  kibana?: Kibana[]
+}

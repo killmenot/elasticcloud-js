@@ -21,19 +21,10 @@
  * SOFTWARE.
  */
 
-import {
-  DeploymentCreateQueryParams,
-  DeploymentGetQueryParams,
-  DeploymentRestoreQueryParams,
-  DeploymentShutdownQueryParams,
-  DeploymentUpdateQueryParams,
-  DeploymentsListQueryParams,
-} from '../interfaces'
-
-export type ElasticQueryParams =
-  | DeploymentCreateQueryParams
-  | DeploymentGetQueryParams
-  | DeploymentRestoreQueryParams
-  | DeploymentShutdownQueryParams
-  | DeploymentUpdateQueryParams
-  | DeploymentsListQueryParams
+import { MetadataItem } from './metadata-item.interface'
+ 
+export interface DeploymentUpdateMetadata {
+   hidden?: boolean
+   system_owned?: boolean
+   tags: MetadataItem[]
+ }

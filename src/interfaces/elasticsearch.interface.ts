@@ -21,19 +21,8 @@
  * SOFTWARE.
  */
 
-import {
-  DeploymentCreateQueryParams,
-  DeploymentGetQueryParams,
-  DeploymentRestoreQueryParams,
-  DeploymentShutdownQueryParams,
-  DeploymentUpdateQueryParams,
-  DeploymentsListQueryParams,
-} from '../interfaces'
-
-export type ElasticQueryParams =
-  | DeploymentCreateQueryParams
-  | DeploymentGetQueryParams
-  | DeploymentRestoreQueryParams
-  | DeploymentShutdownQueryParams
-  | DeploymentUpdateQueryParams
-  | DeploymentsListQueryParams
+export interface Elasticsearch {
+  backend_plan?: Record<string, unknown>
+  display_name: string
+  ref_id: string
+}

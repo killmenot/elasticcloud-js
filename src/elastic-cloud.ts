@@ -31,8 +31,6 @@ import { ElasticError } from './errors'
 import {
   DeploymentCreateQueryParams,
   DeploymentCreateRequest,
-  DeploymentsListQueryParams,
-  DeploymentsListResponse,
   DeploymentCreateResponse,
   DeploymentDeleteResponse,
   DeploymentGetQueryParams,
@@ -41,6 +39,11 @@ import {
   DeploymentRestoreResponse,
   DeploymentShutdownQueryParams,
   DeploymentShutdownResponse,
+  DeploymentUpdateQueryParams,
+  DeploymentUpdateRequest,
+  DeploymentUpdateResponse,
+  DeploymentsListQueryParams,
+  DeploymentsListResponse,
 } from './interfaces'
 import { ElasticQueryParams } from './types'
 
@@ -137,5 +140,16 @@ export class ElasticCloud {
     const url = this.getUrl(`/deployments/${deploymentId}/_shutdown`, query)
 
     return this.http.post(url)
+  }
+
+  @Response()
+  public async updateDeployment(
+    deploymentId: string,
+    data: DeploymentUpdateRequest,
+    query?: DeploymentUpdateQueryParams
+  ): Promise<ElasticResponse<DeploymentUpdateResponse>> {
+    const url = this.getUrl(`/deployments/${deploymentId}`, query)
+
+    return this.http.put(url, data)
   }
 }

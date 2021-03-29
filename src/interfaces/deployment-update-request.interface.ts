@@ -21,19 +21,15 @@
  * SOFTWARE.
  */
 
-import {
-  DeploymentCreateQueryParams,
-  DeploymentGetQueryParams,
-  DeploymentRestoreQueryParams,
-  DeploymentShutdownQueryParams,
-  DeploymentUpdateQueryParams,
-  DeploymentsListQueryParams,
-} from '../interfaces'
+import { DeploymentUpdateMetadata } from './deployment-update-metadata.interface'
+import { DeploymentUpdateResources } from './deployment-update-resources.interface'
+import { DeploymentUpdateSettings } from './deployment-update-settings.interface'
 
-export type ElasticQueryParams =
-  | DeploymentCreateQueryParams
-  | DeploymentGetQueryParams
-  | DeploymentRestoreQueryParams
-  | DeploymentShutdownQueryParams
-  | DeploymentUpdateQueryParams
-  | DeploymentsListQueryParams
+export interface DeploymentUpdateRequest {
+  alias?: string
+  metadata?: DeploymentUpdateMetadata
+  name?: string
+  prune_orphans: boolean
+  resources?: DeploymentUpdateResources
+  settings?: DeploymentUpdateSettings
+}
