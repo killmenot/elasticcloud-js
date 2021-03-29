@@ -21,7 +21,6 @@
  * SOFTWARE.
  */
 
-export * from './enterprise.decorator'
-export * from './error-headers.decorator'
-export * from './headers.decorator'
-export * from './response.decorator'
+export interface DeploymentRestoreQueryParams {
+  restore_snapshot?: boolean
+}

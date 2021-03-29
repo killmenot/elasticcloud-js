@@ -21,7 +21,15 @@
  * SOFTWARE.
  */
 
-export interface DeploymentCreateRequestQuery {
-  request_id?: string
-  validate_only?: boolean
+export interface DeploymentGetQueryParams {
+  convert_legacy_plans?: boolean
+  enrich_with_template?: boolean
+  show_metadata?: boolean
+  show_plan_defaults?: boolean
+  show_plan_history?: boolean
+  show_plan_logs?: boolean
+  show_plans?: boolean
+  show_security?: boolean
+  show_settings?: boolean
+  show_system_alerts?: number //int32
 }

@@ -21,7 +21,12 @@
  * SOFTWARE.
  */
 
-export * from './enterprise.decorator'
-export * from './error-headers.decorator'
-export * from './headers.decorator'
-export * from './response.decorator'
+export const Enterprise = () => (
+  target: unknown,
+  propertyKey: string,
+  descriptor: PropertyDescriptor,
+): PropertyDescriptor => {
+  Reflect.defineMetadata('__elastic_cloud_enterprise__', null, descriptor.value)
+
+  return descriptor
+}

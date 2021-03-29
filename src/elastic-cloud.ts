@@ -23,26 +23,30 @@
 
 import { URL } from 'url'
 import axios, { AxiosInstance } from 'axios'
+import urljoin from 'url-join'
 import { ElasticCloudOptions } from './elastic-cloud-options.interface'
 import { ElasticResponse } from './elastic-response.interface'
-import { Response } from './decorators'
+import { Enterprise, Response } from './decorators'
 import { ElasticError } from './errors'
 import {
+  DeploymentCreateQueryParams,
   DeploymentCreateRequest,
   DeploymentsListQueryParams,
   DeploymentsListResponse,
   DeploymentCreateResponse,
   DeploymentDeleteResponse,
+  DeploymentGetQueryParams,
   DeploymentGetResponse,
+  DeploymentRestoreQueryParams,
   DeploymentRestoreResponse,
+  DeploymentShutdownQueryParams,
   DeploymentShutdownResponse,
 } from './interfaces'
+import { ElasticQueryParams } from './types'
 
 const defaults = {
   baseURL: 'https://api.elastic-cloud.com/api/v1',
 }
-
-type ElasticQueryParams = DeploymentsListQueryParams
 
 export class ElasticCloud {
   private http: AxiosInstance
@@ -71,20 +75,26 @@ export class ElasticCloud {
   private getUrl(endpoint, query?: ElasticQueryParams): string {
     const url = new URL(this.options.baseURL)
 
-    url.pathname = `${url.pathname}/${endpoint}`
+    url.pathname = urljoin(url.pathname, endpoint)
 
     Object.keys(query || {}).forEach((x) => {
       url.searchParams.set(x, query[x])
     })
 
+    console.log(url.toString())
+
     return url.toString()
   }
 
   @Response()
-  public async createDeployment(data: DeploymentCreateRequest): Promise<ElasticResponse<DeploymentCreateResponse>> {
+  public async createDeployment(
+    data: DeploymentCreateRequest,
+    query?: DeploymentCreateQueryParams
+  ): Promise<ElasticResponse<DeploymentCreateResponse>> {
     return this.http.post('/deployments', data)
   }
 
+  @Enterprise()
   @Response()
   public async deleteDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentDeleteResponse>> {
     return this.http.delete(`/deployments/${deploymentId}`)
@@ -100,17 +110,32 @@ export class ElasticCloud {
   }
 
   @Response()
-  public async getDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentGetResponse>> {
-    return this.http.get(`/deployments/${deploymentId}`)
+  public async getDeployment(
+    deploymentId: string,
+    query?: DeploymentGetQueryParams
+  ): Promise<ElasticResponse<DeploymentGetResponse>> {
+    const url = this.getUrl(`/deployments/${deploymentId}`, query)
+
+    return this.http.get(url)
   }
 
   @Response()
-  public async restoreDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentRestoreResponse>> {
-    return this.http.post(`/deployments/${deploymentId}/_restore`)
+  public async restoreDeployment(
+    deploymentId: string,
+    query?: DeploymentRestoreQueryParams
+  ): Promise<ElasticResponse<DeploymentRestoreResponse>> {
+    const url = this.getUrl(`/deployments/${deploymentId}/_restore`, query)
+
+    return this.http.post(url)
   }
 
   @Response()
-  public async shutdownDeployment(deploymentId: string): Promise<ElasticResponse<DeploymentShutdownResponse>> {
-    return this.http.post(`/deployments/${deploymentId}/_shutdown`)
+  public async shutdownDeployment(
+    deploymentId: string,
+    query?: DeploymentShutdownQueryParams
+  ): Promise<ElasticResponse<DeploymentShutdownResponse>> {
+    const url = this.getUrl(`/deployments/${deploymentId}/_shutdown`, query)
+
+    return this.http.post(url)
   }
 }

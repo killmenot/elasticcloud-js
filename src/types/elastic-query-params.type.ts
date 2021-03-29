@@ -21,6 +21,17 @@
  * SOFTWARE.
  */
 
-import { DeploymentsListQueryParams } from '../interfaces'
+import {
+  DeploymentCreateQueryParams,
+  DeploymentGetQueryParams,
+  DeploymentsListQueryParams,
+  DeploymentRestoreQueryParams,
+  DeploymentShutdownQueryParams,
+} from '../interfaces'
 
-export type ElasticQueryParams = DeploymentsListQueryParams
+export type ElasticQueryParams =
+  | DeploymentCreateQueryParams
+  | DeploymentGetQueryParams
+  | DeploymentsListQueryParams
+  | DeploymentRestoreQueryParams
+  | DeploymentShutdownQueryParams
