@@ -37,6 +37,7 @@ import {
   DeploymentGetResponse,
   DeploymentRestoreQueryParams,
   DeploymentRestoreResponse,
+  DeploymentsSearchResponse,
   DeploymentShutdownQueryParams,
   DeploymentShutdownResponse,
   DeploymentUpdateQueryParams,
@@ -44,6 +45,7 @@ import {
   DeploymentUpdateResponse,
   DeploymentsListQueryParams,
   DeploymentsListResponse,
+  SearchRequest,
 } from './interfaces'
 import { ElasticQueryParams } from './types'
 
@@ -83,8 +85,6 @@ export class ElasticCloud {
     Object.keys(query || {}).forEach((x) => {
       url.searchParams.set(x, query[x])
     })
-
-    console.log(url.toString())
 
     return url.toString()
   }
@@ -130,6 +130,13 @@ export class ElasticCloud {
     const url = this.getUrl(`/deployments/${deploymentId}/_restore`, query)
 
     return this.http.post(url)
+  }
+
+  @Response()
+  public async searchDeployments(data: SearchRequest): Promise<ElasticResponse<DeploymentsSearchResponse>> {
+    const url = this.getUrl('/deployments/_search')
+
+    return this.http.post(url, data)
   }
 
   @Response()
