@@ -24,7 +24,7 @@
 import { DeploymentResource } from './deployment-resource.interface'
 
 export interface DeploymentsSearchResponse {
-  id: string
-  name: string
   resources: DeploymentResource[]
+  match_count?: number //int32
+  return_count?: number //int32
 }
