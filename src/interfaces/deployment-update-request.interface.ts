@@ -26,9 +26,8 @@ import { DeploymentUpdateResources } from './deployment-update-resources.interfa
 import { DeploymentUpdateSettings } from './deployment-update-settings.interface'
 
 export interface DeploymentUpdateRequest {
-  alias?: string
-  metadata?: DeploymentUpdateMetadata
-  name?: string
+  apm?: DeploymentUpdateMetadata
+  appsearch?: string
   prune_orphans: boolean
   resources?: DeploymentUpdateResources
   settings?: DeploymentUpdateSettings

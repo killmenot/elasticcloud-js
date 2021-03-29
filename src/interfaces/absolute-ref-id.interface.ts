@@ -21,8 +21,7 @@
  * SOFTWARE.
  */
 
-import { DeploymentObservabilitySettings } from './deployment-observability-settings.interface'
-
-export interface DeploymentUpdateSettings {
-  observability?: DeploymentObservabilitySettings
+export interface AbsoluteRefId {
+  deployment_id: string
+  ref_id: string
 }

@@ -21,12 +21,14 @@
  * SOFTWARE.
  */
 
-import { DeploymentUpdateMetadata } from './deployment-update-metadata.interface'
+import { ApmPayload } from './apm-payload.interface'
+import { AppSearchPayload } from './app-search-payload.interface'
+import { ElasticsearchPayload } from './elasticsearch-payload.interface'
+import { KibanaPayload } from './kibana-payload.interface'
 
 export interface DeploymentUpdateResources {
-  apm?: DeploymentUpdateMetadata
-  appsearch?: string
-  prune_orphans: boolean
-  resources?: DeploymentUpdateResources
-  settings?: DeploymentUpdateSettings
+  apm?: ApmPayload[]
+  appsearch?: AppSearchPayload[]
+  elasticsearch?: ElasticsearchPayload[]
+  kibana?: KibanaPayload[]
 }

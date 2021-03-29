@@ -22,9 +22,8 @@
  */
 
 export interface Kibana {
-  apm?: Apm[]
-  appsearch?: AppSearch[]
-  elasticsearch?: Elasticsearch[]
-  enterprise_search?: EnterpriseSearch[]
-  kibana?: Kibana[]
+  backend_plan?: Record<string, unknown>
+  display_name: string
+  elasticsearch_cluster_ref_id: string
+  ref_id: string
 }

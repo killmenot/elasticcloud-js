@@ -21,8 +21,10 @@
  * SOFTWARE.
  */
 
-import { DeploymentObservabilitySettings } from './deployment-observability-settings.interface'
+import { DeploymentLoggingSettings } from './deployment-logging-settings.interface'
+import { DeploymentMetricsSettings } from './deployment-metrics-settings.interface'
 
-export interface DeploymentUpdateSettings {
-  observability?: DeploymentObservabilitySettings
+export interface DeploymentObservabilitySettings {
+  logging?: DeploymentLoggingSettings
+  metrics?: DeploymentMetricsSettings
 }

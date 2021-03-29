@@ -24,7 +24,7 @@
 import { Creates } from './creates.interface'
 import { Updates } from './updates.interface'
 
-export interface DeploymentUpdateResponse {
+export interface DeploymentDiagnostics {
   creates?: Creates
   updates?: Updates
 }
