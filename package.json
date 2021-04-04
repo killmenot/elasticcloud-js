@@ -27,6 +27,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest",
     "lint": "eslint --fix ./src/**/*.ts",
     "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
+    "prepare": "npm run build",
     "dev": "ts-node -r tsconfig-paths/register src/dev.ts",
     "dev2": "ts-node -r tsconfig-paths/register src/interfaces-dev.ts"
   },
