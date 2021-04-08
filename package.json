@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": "git@github.com:killmenot/elasticcloud-js.git",
   "scripts": {
-    "build": "rm -Rf ./dist && tsc -b",
+    "build": "rimraf dist && tsc -b",
     "bump:deps": "ncu --target minor -u",
     "test": "jest",
     "test:build": "jest --testRegex .spec.js",
@@ -53,6 +53,7 @@
     "jest": "^26.6.3",
     "npm-check-updates": "^11.3.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "rxjs": "^6.6.7",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
